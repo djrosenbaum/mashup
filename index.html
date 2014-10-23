@@ -255,7 +255,7 @@ var memory = {
         games_played : 0
     }
 
-}
+};
 
 memory.game_board.init_game_board = function() {
 
@@ -305,7 +305,7 @@ memory.game_board.determine_row_size = function() {
         return 2;
     }
 
-}
+};
 
 //Shuffle the cards
 //1. determine number of cards to shuffle
@@ -342,7 +342,7 @@ memory.cards.shuffle_cards = function() {
         memory.cards.card_array[random_index] = last_number_in_array;
     }
 
-}
+};
 
 
 //GENERATE GAME BOARD
@@ -568,7 +568,7 @@ $('.player_prompt .join_game').on('click', function() {
 });
 
 $('.player_prompt').on('keypress', '.player_name_input', function(e) {
-    if (e.keyCode == 13) {
+    if (e.keyCode === 13) {
         //join game
         //console.log('join game');
 
