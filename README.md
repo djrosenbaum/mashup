@@ -1,30 +1,26 @@
-# Mashup project
+# Multiplayer Memory Game with Firebase & Reddit API
 
-This project is open-ended!  Requirements:
+###Game Demo
+* [OneRope Memory Game DEMO](http://onerope.com/memory)
 
-* Build a site that uses data from at least one external API in an interesting, interactive way.
-* Replace this README with a description of the project.
-* You are welcome to use any 3rd-party libraries/frameworks – just load them from a CDN (e.g. [cdnjs](http://cdnjs.com)), or put them under the [`vendor/`](vendor/) folder.
+___
 
-The JS code should be **non-trivial**.  That being said... start simple!  No server-side coding is required, but feel free to create a backend in whatever language if you like, if you need one.
+###Project Description
 
-* [AJAX demos](https://github.com/advanced-js/deck/tree/gh-pages/demos/ajax)
-* [list of API suggestions](https://gist.github.com/afeld/4952991)
-* [inspiration?](http://www.programmableweb.com/mashups)
+This project is a competitive multiplayer match making memory game.
 
-## V1
+The game is built with jQuery, Reddit API, and Firebase.
 
-First pass.
+* [jQuery](http://jquery.com/)
+* [Reddit API](http://www.reddit.com/dev/api)
+* [Firebase](https://www.firebase.com/)
 
-## V2
+Players connect and are prompted to enter their name to join.
 
-Iterate!
+Once connected, the game board is layed out with a random set of images pulled from Reddit.
 
-* Refactor
-* Add a new feature
+In game, players compete to match all tiles in as litte time as possible.
 
-## Bonus points
+___
 
-* automated tests
-    * [Sinon.js fakeServer](http://sinonjs.org/docs/#fakeServer) may be helpful
-* fancy interactivity/animations
+###Screenshots
