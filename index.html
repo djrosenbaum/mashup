@@ -274,7 +274,7 @@ memory.game_board.init_game_board = function() {
     //FETCH CARDS FROM REDDIT
     memory.reddit.fetch_cards_from_reddit();
 
-}
+};
 
 memory.game_board.determine_row_size = function() {
 
@@ -390,7 +390,7 @@ memory.game_board.layout_cards = function() {
     }
 
     memory.game_play.add_listeners();
-}
+};
 
 memory.game_board.game_won = function() {
 
@@ -415,7 +415,7 @@ memory.game_board.game_won = function() {
     memory.stats.check_best_score();
 
     memory.firebase.send_update();
-}
+};
 
 memory.stats.check_best_score = function() {
 
@@ -426,7 +426,7 @@ memory.stats.check_best_score = function() {
         memory.stats.best_score = memory.stats.total_moves;
     }
 
-}
+};
 
 memory.game_play.add_listeners = function() {
 
@@ -437,6 +437,9 @@ memory.game_play.add_listeners = function() {
     $('.memory_button').on('click', function() {
 
         clearTimeout(memory.game_play.click_timer);
+
+        var selected_number;
+
         if ( memory.game_play.click_state === false ) {
             memory.game_play.reset_tiles();
         }
@@ -459,7 +462,7 @@ memory.game_play.add_listeners = function() {
             //FIRST CLICK
 
             //store the selected button number
-            var selected_number = $(this).attr('data-number');
+            selected_number = $(this).attr('data-number');
 
             //set the current number
             memory.game_play.current_number = selected_number;
@@ -488,7 +491,7 @@ memory.game_play.add_listeners = function() {
             memory.game_play.click_state = false;
 
             //store the selected number
-            var selected_number = $(this).attr('data-number');
+            selected_number = $(this).attr('data-number');
 
             //show the image
             $(this).children('img').removeClass('hidden');
@@ -535,7 +538,7 @@ memory.game_play.add_listeners = function() {
 
     });
 
-}
+};
 
 memory.game_play.reset_tiles = function () {
     memory.game_play.current_number = null;
@@ -549,7 +552,7 @@ memory.game_play.reset_tiles = function () {
 
     //USER CAN NOW SELECT A NEW TILE
     memory.game_play.game_paused = false;
-}
+};
 
 //INITIAL GAME SCREEN
 $('.player_prompt .join_game').on('click', function() {
@@ -646,7 +649,7 @@ memory.reddit.fetch_cards_from_reddit = function () {
     }
 
 
-}
+};
 
 
 //FIREBASE
@@ -662,7 +665,7 @@ memory.firebase.display_players = function() {
         memory.firebase.remove_user_from_list( old_snapshot );
     });
 
-}
+};
 
 memory.firebase.join_game = function () {
     //generate user id
@@ -685,7 +688,7 @@ memory.firebase.join_game = function () {
 
     memory.firebase.matchmaker.child('players').child(memory.firebase.player_id).onDisconnect().remove();
 
-}
+};
 
 
 memory.firebase.display_room = function() {
@@ -696,7 +699,7 @@ memory.firebase.display_room = function() {
     $('.game_admin_bar').removeClass('hidden');
 
     memory.game_board.init_game_board();
-}
+};
 
 memory.firebase.add_user_to_list = function( snapshot ) {
     var player_id = snapshot.ref().name();
@@ -706,7 +709,7 @@ memory.firebase.add_user_to_list = function( snapshot ) {
     memory.firebase.matchmaker.child('players').on('child_changed', function(snapshot) {
         memory.firebase.broadcast_update(snapshot);
     });
-}
+};
 
 memory.firebase.remove_user_from_list = function ( old_snapshot ) {
 
@@ -714,7 +717,7 @@ memory.firebase.remove_user_from_list = function ( old_snapshot ) {
     var userid = old_snapshot.ref().name();
     $('.player_list .player_name[data-userid="' + userid + '"]').remove();
 
-}
+};
 
 memory.firebase.send_update = function () {
 
@@ -722,7 +725,7 @@ memory.firebase.send_update = function () {
         //console.log('sent update');
     });
 
-}
+};
 
 memory.firebase.broadcast_update = function( snapshot ) {
 
@@ -741,7 +744,7 @@ memory.firebase.broadcast_update = function( snapshot ) {
     //show how many moves user won in
     $('.player_list .player_updates').html(player_name + ' just won in ' + moves + ' moves');
 
-}
+};
 
 memory.firebase.display_players();
 
