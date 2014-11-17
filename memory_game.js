@@ -247,19 +247,19 @@ memory.game_play.memory_button_listener = function() {
         //SET THE MEMORY BUTTON THAT WAS CLICKED TO ACTIVE
         $(this).addClass('active');
 
-        memory.game_play.check_click_order();
+        memory.game_play.check_click_order( $(this) );
 
     });
 
 };
 
-memory.game_play.check_click_order = function() {
+memory.game_play.check_click_order = function( $this ) {
     //Step 1. CHECK IF FIRST CLICK OR SECOND CLICK
     if ( memory.game_play.click_state === false ) {
-        memory.game_play.first_click( $(this) );
+        memory.game_play.first_click( $this );
     }
     else {
-        memory.game_play.second_click( $(this) );
+        memory.game_play.second_click( $this );
     }
 };
 
