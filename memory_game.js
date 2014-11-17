@@ -148,7 +148,7 @@ memory.game_board.layout_cards = function() {
         var imgur_url = memory.reddit.imgur_array[imgur_array_index];
         //console.log('imgur url: ', imgur_url);
 
-        var memory_button_html = '<div class="memory_button' + check_tile_column(j)  + '" data-location="' + i + '" data-number="' + memory.cards.card_array[i] + '"><img class="hidden" src="' + memory.reddit.imgur_array[memory.cards.card_array[i]] + '" width="125" height="125"></div>';
+        var memory_button_html = '<div class="memory_button' + memory.game_board.check_tile_column(j)  + '" data-location="' + i + '" data-number="' + memory.cards.card_array[i] + '"><img class="hidden" src="' + memory.reddit.imgur_array[memory.cards.card_array[i]] + '" width="125" height="125"></div>';
 
         //IF THE TILE IS IN THE LAST GRID COLUMN, RESET BACK TO THE FIRST COLUMN
         if ( j === 1 || j < memory.game_board.row_size ) {
@@ -165,7 +165,7 @@ memory.game_board.layout_cards = function() {
 };
 
 memory.game_board.check_tile_column = function(j) {
-    console.log('checking tile column');
+    //console.log('checking tile column');
     if ( j === 1 ) {
         return ' left_square';
     }
