@@ -302,6 +302,17 @@ memory.game_play.second_click = function( $this ) {
     //SHOW THE IMAGE
     $this.children('img').removeClass('hidden');
 
+    //CHECK FOR MATCH
+    memory.game_play.check_for_match( selected_number );
+
+    //INCREMENT SCORE
+    memory.game_play.increment_score();
+
+    //SHOW THE SCORE IN THE DOM
+    memory.game_play.show_updated_score();
+};
+
+memory.game_play.check_for_match = function( selected_number ) {
     if ( selected_number === memory.game_play.current_number ) {
         //THERE IS A MATCH
         memory.game_play.matched_a_tile();
@@ -310,12 +321,6 @@ memory.game_play.second_click = function( $this ) {
         //THERE IS NOT A MATCH
         memory.game_play.not_a_matched_tile();
     }
-
-    //INCREMENT SCORE
-    memory.game_play.increment_score();
-
-    //SHOW THE SCORE IN THE DOM
-    memory.game_play.show_updated_score();
 };
 
 memory.game_play.increment_score = function() {
