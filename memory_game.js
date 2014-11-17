@@ -139,25 +139,16 @@ memory.game_board.layout_cards = function() {
     //WHICH COLUMN THE CARD IS PLACED
     var j = 1;
 
-    //HTML FOR EACH TILE
-    var memory_button_html;
-
-    //IMGUR IMAGE URL
-    var imgur_url;
-
-    //INDEX OF THE IMGUR URL
-    var imgur_array_index;
-
     //LOOP THROUGH ALL OF THE CARDS
     for ( var i = 0; i < memory.cards.total_cards; i++ ) {
 
-        imgur_array_index = memory.cards.card_array[i];
+        var imgur_array_index = memory.cards.card_array[i];
         //console.log('imgur array index', imgur_array_index);
 
-        imgur_url = memory.reddit.imgur_array[imgur_array_index];
+        var imgur_url = memory.reddit.imgur_array[imgur_array_index];
         //console.log('imgur url: ', imgur_url);
 
-        memory_button_html = '<div class="memory_button' + check_tile_column(j)  + '" data-location="' + i + '" data-number="' + memory.cards.card_array[i] + '"><img class="hidden" src="' + memory.reddit.imgur_array[memory.cards.card_array[i]] + '" width="125" height="125"></div>';
+        var memory_button_html = '<div class="memory_button' + check_tile_column(j)  + '" data-location="' + i + '" data-number="' + memory.cards.card_array[i] + '"><img class="hidden" src="' + memory.reddit.imgur_array[memory.cards.card_array[i]] + '" width="125" height="125"></div>';
 
         //IF THE TILE IS IN THE LAST GRID COLUMN, RESET BACK TO THE FIRST COLUMN
         if ( j === 1 || j < memory.game_board.row_size ) {
@@ -168,12 +159,12 @@ memory.game_board.layout_cards = function() {
         }
 
         //DEAL CARD TO THE GAME BOARD
-        $('.game_board').append(memory_button_html);
+        memory.game_board.deal_card( memory_button_html );
     }
 
 };
 
-function check_tile_column(j) {
+memory.game_board.check_tile_column = function(j) {
     console.log('checking tile column');
     if ( j === 1 ) {
         return ' left_square';
@@ -181,7 +172,11 @@ function check_tile_column(j) {
     else {
         return '';
     }
-}
+};
+
+memory.game_board.deal_card = function ( memory_button_html ) {
+    $('.game_board').append(memory_button_html);
+};
 
 memory.game_board.game_won = function() {
 
@@ -225,7 +220,13 @@ memory.game_play.add_listeners = function() {
     memory.game_play.current_number = null;
     memory.game_play.current_location = null;
 
-    $('.memory_button').on('click', function(e) {
+    memory.game_play.memory_button_listener();
+
+};
+
+memory.game_play.memory_button_listener = function() {
+
+    $('.memory_button').on('click', function() {
 
         clearTimeout(memory.game_play.click_timer);
 
@@ -246,16 +247,20 @@ memory.game_play.add_listeners = function() {
         //SET THE MEMORY BUTTON THAT WAS CLICKED TO ACTIVE
         $(this).addClass('active');
 
-        //Step 1. CHECK IF FIRST CLICK OR SECOND CLICK
-        if ( memory.game_play.click_state === false ) {
-            memory.game_play.first_click( $(this) );
-        }
-        else {
-            memory.game_play.second_click( $(this) );
-        }
+        memory.game_play.check_click_order();
 
     });
 
+};
+
+memory.game_play.check_click_order = function() {
+    //Step 1. CHECK IF FIRST CLICK OR SECOND CLICK
+    if ( memory.game_play.click_state === false ) {
+        memory.game_play.first_click( $(this) );
+    }
+    else {
+        memory.game_play.second_click( $(this) );
+    }
 };
 
 memory.game_play.first_click = function( $this ) {
@@ -307,9 +312,17 @@ memory.game_play.second_click = function( $this ) {
     }
 
     //INCREMENT SCORE
-    memory.stats.total_moves += 1;
+    memory.game_play.increment_score();
 
     //SHOW THE SCORE IN THE DOM
+    memory.game_play.show_updated_score();
+};
+
+memory.game_play.increment_score = function() {
+    memory.stats.total_moves += 1;
+};
+
+memory.game_play.show_updated_score = function() {
     $('.game_admin_bar .total_moves span').html( memory.stats.total_moves );
 };
 
