@@ -1,0 +1,161 @@
+    @import url(https://fonts.googleapis.com/css?family=Handlee);
+
+    * { margin: 0; padding: 0; }
+
+    body {
+        background-color: #fff;
+        font-family: 'Handlee', arial;
+    }
+
+    .memory {
+        margin: 0 auto;
+        padding-bottom: 100px;
+        width: 700px;
+    }
+
+    .memory .red_text {
+        color:#c00;
+    }
+
+    .game_name {
+        color: #333;
+        font-size: 30px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .player_prompt {
+        font-size: 21px;
+        margin-top: 50px;
+    }
+
+    .player_prompt .player_name_input {
+        display: block;
+        font-size: 21px;
+        padding: 10px;
+        width: 300px;
+    }
+
+    .player_prompt .join_game {
+        background-color: #ccc;
+        border-radius: 4px;
+        color: #333;
+        cursor: pointer;
+        display: inline-block;
+        padding: 6px 6px 6px 6px;
+        margin-top: 20px;
+    }
+
+    .player_prompt .join_game:hover {
+        background-color: #999;
+    }
+
+    .game_admin_bar {
+        height: 50px;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .game_admin_bar .total_moves {
+        color: #777;
+        float: left;
+        font-size: 16px;
+    }
+
+    .game_admin_bar .reset_button {
+        background-color: #ccc;
+        border-radius: 4px;
+        color: #333;
+        cursor: pointer;
+        display: inline-block;
+        float: right;
+        padding: 6px 6px 6px 6px;
+    }
+
+    .game_board {
+        float: left;
+        margin-bottom: 60px;
+    }
+
+    .game_board .memory_button {
+        background-color: #BBBDBF;
+        border-top: 1px solid #ccc;
+        border-right: 1px solid #999;
+        border-bottom: 1px solid #999;
+        border-left: 1px solid #ccc;
+        cursor: pointer;
+        float: left;
+        font-size: 30px;
+        height: 125px;
+        line-height: 125px;
+        margin-right: 4px;
+        margin-bottom: 4px;
+        position: relative;
+        text-align: center;
+        overflow-y: hidden;
+        vertical-align: middle;
+        width: 125px;
+    }
+
+    .game_board :not(.match).memory_button:hover {
+        border: 1px solid #000;
+    }
+
+    .pressed {
+        background-color: #fff;
+        border-top: 1px solid #666;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        border-left: 1px solid #666;
+    }
+
+    .left_square {
+        clear: left;
+    }
+
+    .player_list .player_list_title {
+        border-bottom: 1px solid #777;
+        font-size: 21px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        text-align: center;
+    }
+
+    .player_list .player_updates {
+        border-bottom: 1px solid #777;
+        color: #777;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .player_list .player_name {
+        border-bottom: 1px solid #ccc;
+        color: #777;
+        font-size: 21px;
+        padding: 10px;
+    }
+
+    .player_list .player_name span {
+        color: #000;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+
+    .clear {
+        clear: both;
+    }
+
+    .match {
+        opacity: 0.4;
+    }
+
+    .highlight {
+        background-color: #e1e1e1!important;
+        cursor: default;
+        opacity: 1!important;
+    }
+
+    .hidden {
+        visibility: hidden;
+    }
