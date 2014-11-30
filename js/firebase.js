@@ -50,7 +50,7 @@ firebase.display_room = function() {
     $('.game_admin_bar').removeClass('hidden');
 
     //CREATE A NEW DECK WITH X CARDS TO MATCH
-    new_deck = new card_deck( 5 );
+    new_deck = new Card_deck( 5 );
 
     //FETCH CARDS FROM REDDIT
     dealer.request_images_from_reddit();

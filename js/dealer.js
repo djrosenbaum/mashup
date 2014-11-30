@@ -61,8 +61,8 @@ dealer.build_deck = function() {
     for ( var i = 0; i < this.match_sets; i++ ) {
 
         //CREATE 2 MATCHING CARDS
-        var card_1 = new playing_card(i);
-        var card_2 = new playing_card(i);
+        var card_1 = new Playing_card(i);
+        var card_2 = new Playing_card(i);
 
         //ADD CARDS TO THE DECK
         this.cards.push(card_1,card_2);

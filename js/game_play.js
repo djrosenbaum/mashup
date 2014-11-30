@@ -83,7 +83,7 @@ gameplay.reset = function() {
     stats.show_updated_score();
 
     //CREATE A NEW DECK WITH X CARDS TO MATCH
-    new_deck = new card_deck( 5 );
+    new_deck = new Card_deck( 5 );
 
     //FETCH CARDS FROM REDDIT
     dealer.request_images_from_reddit();
