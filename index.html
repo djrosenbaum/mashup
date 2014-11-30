@@ -1,38 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mashup Match Making Game</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js"></script>
 
-  </head>
-  <body>
+    <head>
+        <title>Mashup Match Making Game</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js"></script>
+    </head>
 
-    <div class='memory'>
-        <div class='game_name'><span class='red_text'>Match Maker</span> - <span class='red_text'>Match Maker</span> - Make Me a Match</div>
+    <body>
+        <div class='memory'>
+            <div class='game_name'><span class='red_text'>Match Maker</span> - <span class='red_text'>Match Maker</span> - Make Me a Match</div>
 
-        <div class='player_prompt'>
-            <input class="player_name_input" type="text" placeholder="your name here">
-            <div class="join_game">Join Game</div>
+            <div class='player_prompt'>
+                <input class="player_name_input" type="text" placeholder="your name here">
+                <div class="join_game">Join Game</div>
+            </div>
+
+            <div class='game_admin_bar hidden'>
+                <div class='total_moves'>Total Moves: <span>0</span></div>
+                <div class='reset_button'>RESET</div>
+            </div>
+
+            <div class='game_board'></div>
+
+            <div class='clear'></div>
+
+            <div class='player_list'>
+                <div class="player_list_title">Player List</div>
+                <div class="player_updates"></div>
+            </div>
         </div>
 
-        <div class='game_admin_bar hidden'>
-            <div class='total_moves'>Total Moves: <span>0</span></div>
-            <div class='reset_button'>RESET</div>
-        </div>
+        <script src="classes/card_deck.js"></script>
+        <script src="classes/playing_card.js"></script>
+        <script src="js/dealer.js"></script>
+        <script src="js/player.js"></script>
+        <script src="js/card_table.js"></script>
+        <script src="js/firebase.js"></script>
+        <script src="js/game_play.js"></script>
+        <script src="js/stats.js"></script>
+        <script src="js/listeners.js"></script>
 
-        <div class='game_board'></div>
+        <script>
 
-        <div class='clear'></div>
+        firebase.display_players();
 
-        <div class='player_list'>
-            <div class="player_list_title">Player List</div>
-            <div class="player_updates"></div>
-        </div>
-    </div>
+        </script>
 
-    <script src="memory_game.js"></script>
-
-  </body>
+    </body>
 </html>
